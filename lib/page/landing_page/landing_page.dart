@@ -4,6 +4,8 @@ import 'package:url_launcher/url_launcher.dart';
 class LandingPage extends StatelessWidget {
   const LandingPage({Key? key}) : super(key: key);
 
+  final phone = '0866 684 094';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +25,7 @@ class LandingPage extends StatelessWidget {
   _mainContent() {
     return Column(children: [
       const SizedBox(height: 20),
-      _buildText(text: 'GRAB XE MÁY - GRAB Ô TÔ - GRAB FOOD'),
+      _buildText(text: 'GRAB XE MÁY - Ô TÔ - GRAB FOOD'),
       Expanded(
           child: Column(children: [
         const SizedBox(height: 20),
@@ -33,15 +35,14 @@ class LandingPage extends StatelessWidget {
         const SizedBox(height: 20),
         _buildButton(),
         const SizedBox(height: 20),
-        _buildText(
-            text: '374/10, Vĩnh Lập, Vĩnh Trung, Tịnh Biên, An Giang',
-            fontSize: 15),
+        _buildText(text: 'Long Thọ, Nhơn Trạch, Đồng Nai', fontSize: 15),
       ]))
     ]);
   }
 
   _buildText({String? text, double? fontSize}) {
     return Text(text ?? '',
+        overflow: TextOverflow.ellipsis,
         style: TextStyle(
             fontSize: fontSize ?? 20,
             fontWeight: FontWeight.bold,
@@ -55,10 +56,10 @@ class LandingPage extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: Row(
             mainAxisSize: MainAxisSize.min,
-            children: const [
-              Icon(Icons.phone),
-              Text(' 0979 600 709',
-                  style: TextStyle(
+            children: [
+              const Icon(Icons.phone),
+              Text(' $phone',
+                  style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: Colors.white))
@@ -68,6 +69,6 @@ class LandingPage extends StatelessWidget {
   }
 
   void _callCar() {
-    launchUrl(Uri.parse('tel:0979600709'));
+    launchUrl(Uri.parse('tel:$phone'));
   }
 }
